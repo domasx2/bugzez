@@ -1,0 +1,12 @@
+frontend:
+    build: client/
+    volumes:
+        - "client/src:/src"
+        - "client/dist:/dist"
+server:
+    build: .
+    ports:
+        - "8000:8000"
+    volumes:
+        - "server:/src"
+        - "client/dist:/frontend"
