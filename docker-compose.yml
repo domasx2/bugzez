@@ -6,7 +6,7 @@ frontend:
 server:
     build: .
     ports:
-        - "8000:8000"
+        - "9000:9000"
     volumes:
-        - "server:/src"
-        - "client/dist:/frontend"
+        - "server:/go/src/github.com/domasx2/bugzez"
+        - "client/dist:/client"

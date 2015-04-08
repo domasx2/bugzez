@@ -1,11 +1,10 @@
-FROM node
+FROM golang:1.4
 
-VOLUME ["/src"]
-VOLUME ["/frontend"]
+RUN go get github.com/revel/revel
+RUN go get github.com/revel/cmd/revel
 
-# Install app dependencies
-ADD package.json .
-RUN npm install
+VOLUME ["/go/src/github.com/domasx2/bugzez"]
+VOLUME ["/client"]
 
-EXPOSE  8000
-CMD ["node", "/src/bin/www"]
+EXPOSE 9000
+CMD ["revel", "run", "github.com/domasx2/bugzez"]
