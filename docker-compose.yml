@@ -1,12 +1,17 @@
 frontend:
-    build: client/
+    build: frontend/
+    ports:
+        - "35729:35729"
     volumes:
-        - "client/src:/src"
-        - "client/dist:/dist"
+        - "frontend/src:/src"
+        - "frontend/dist:/dist"
+        - "frontend/Gulpfile.js:/Gulpfile.js"
 server:
     build: .
     ports:
-        - "9000:9000"
+        - "3000:3000"
     volumes:
         - "server:/go/src/github.com/domasx2/bugzez"
-        - "client/dist:/client"
+        - "frontend/dist:/static"
+    environment:
+        PORT: 8000
